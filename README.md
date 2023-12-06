@@ -1,6 +1,6 @@
 # Benchmarking logging libraries for Go
 
-## Palage4a's note
+## Note from 06.12.2023
 ### Install
 
 ```shell
