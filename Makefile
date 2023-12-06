@@ -1,7 +1,7 @@
 GOTEST_FLAGS=-cpu=1,2,4 -benchmem -benchtime=5s
 
-TEXT_PKGS=Gokit Logrus Log15 Gologging Seelog Zerolog Fortiolog
-JSON_PKGS=Gokit Logrus Log15 Zerolog
+TEXT_PKGS=Zap Zerolog Gokit Logrus
+JSON_PKGS=Zap Zerolog Gokit Logrus
 
 TEXT_PKG_TARGETS=$(addprefix test-text-,$(TEXT_PKGS))
 JSON_PKG_TARGETS=$(addprefix test-json-,$(JSON_PKGS))
@@ -11,13 +11,6 @@ JSON_PKG_TARGETS=$(addprefix test-json-,$(JSON_PKGS))
 all: deps test
 
 deps:
-	go get -u github.com/sirupsen/logrus
-	go get -u gopkg.in/inconshreveable/log15.v2
-	go get -u github.com/op/go-logging
-	go get -u github.com/cihub/seelog
-	go get -u github.com/go-kit/kit/log
-	go get -u github.com/rs/zerolog
-	go get -u fortio.org/fortio
 
 test: test-text test-json
 

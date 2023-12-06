@@ -1,5 +1,62 @@
 # Benchmarking logging libraries for Go
 
+## Palage4a's note
+### Install
+
+```shell
+go mod tidy
+```
+
+### Usage
+See Makefile
+
+### Results
+goos: darwin
+goarch: amd64
+cpu: Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz
+## Logrus
+| Benchmark              | Operations | ns/op | B/op | allocs/op |
+|-----------------------------|------------|--------|------|-----------|
+| BenchmarkLogrusJSONNegative | 12170359 | 469.3 | 496 | 4        |
+| BenchmarkLogrusJSONNegative-2 | 21971388 | 269.1 | 496 | 4        |
+| BenchmarkLogrusJSONNegative-4 | 34836909 | 163.9 | 496 | 4        |
+| BenchmarkLogrusJSONPositive | 1350093 | 4496 | 2128 | 32      |
+| BenchmarkLogrusJSONPositive-2 | 1513882 | 3971 | 2128 | 32      |
+| BenchmarkLogrusJSONPositive-4 | 1345806 | 4741 | 2130 | 32      |
+
+### Zap
+| Benchmark                 | Operations | ns/op | B/op | allocs/op |
+|-----------------------------|------------|--------|------|-----------|
+| BenchmarkZapJSONNegative   | 604714940 | 9.913 | 0   | 0        |
+| BenchmarkZapJSONNegative-2 | 1000000000 | 5.043 | 0   | 0        |
+| BenchmarkZapJSONNegative-4 | 1000000000 | 2.615 | 0   | 0        |
+| BenchmarkZapJSONPositive   | 5465292   | 1070  | 384 | 1        |
+| BenchmarkZapJSONPositive-2 | 10516716  | 570.6 | 384 | 1        |
+| BenchmarkZapJSONPositive-4 | 16143178  | 364.9 | 384 | 1        |
+
+### Zerolog
+| Benchmark                | Operations | ns/op | B/op | allocs/op |
+|-----------------------------|------------|--------|------|-----------|
+| BenchmarkZerologJSONNegative  | 886579431 | 6.844 | 0  | 0       |
+| BenchmarkZerologJSONNegative-2 | 1000000000 | 3.555 | 0  | 0       |
+| BenchmarkZerologJSONNegative-4 | 1000000000 | 1.831 | 0  | 0       |
+| BenchmarkZerologJSONPositive  | 17925720 | 347.4 | 0  | 0       |
+| BenchmarkZerologJSONPositive-2 | 27156001 | 192.2 | 0  | 0       |
+| BenchmarkZerologJSONPositive-4 | 47358937 | 126.9 | 0  | 0       |
+
+### Gokit
+| Benchmark               | Operations | ns/op | B/op | allocs/op |
+|-----------------------------|------------|--------|------|-----------|
+| BenchmarkGokitJSONPositive | 1645981  | 3608 | 1464 | 22      |
+| BenchmarkGokitJSONPositive-2 | 3274807  | 1823 | 1464 | 22      |
+| BenchmarkGokitJSONPositive-4 | 6196363  | 942.2 | 1464 | 22      |
+| BenchmarkGokitJSONNegative | 120163933 | 49.21 | 128 | 1       |
+| BenchmarkGokitJSONNegative-2 | 135198862 | 43.69 | 128 | 1       |
+| BenchmarkGokitJSONNegative-4 | 178507609 | 33.00 | 128 | 1       |
+
+
+## Depracated section
+
 I compared a varity of logging libraries for Go, and performed 2 types of tests
 for 2 logging formats.
 
